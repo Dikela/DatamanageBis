@@ -1,0 +1,10 @@
+table,column,type,pk,fk
+Customers,CustomerID,INT,yes,
+Customers,Name,VARCHAR(100),,
+Orders,OrderID,INT,yes,
+Orders,CustomerID,INT,,Customers.CustomerID
+OrderLines,OrderLineID,INT,yes,
+OrderLines,OrderID,INT,,Orders.OrderID
+OrderLines,ProductID,INT,,Products.ProductID
+Products,ProductID,INT,yes,
+Products,Name,VARCHAR(100),,

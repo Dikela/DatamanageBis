@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visualisation Modèle Relationnel (CSV → ER)</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Librairies via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lz-string@1.5.0/libs/lz-string.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+</head>
+<body>
+  <header>
+    <h1>📊 Modèle de Données – Visualiseur ER</h1>
+    <div class="actions">
+      <label class="file-label">
+        <input type="file" id="csvInput" accept=".csv" />
+        📥 Importer CSV
+      </label>
+      <button id="btnFit">🔍 Ajuster</button>
+      <button id="btnExport">💾 Exporter JSON</button>
+      <button id="btnExportSQL">🗄️ Export SQL</button>
+      <button id="btnShare">🔗 Partager</button>
+      <a id="downloadSample" href="#" download="sample_model.csv">📄 Exemple</a>
+    </div>
+  </header>
+
+  <main>
+    <aside id="sidebar">
+      <div class="search">
+        <input type="text" id="searchTable" placeholder="Rechercher une table..." />
+      </div>
+      <ul id="tableList"></ul>
+    </aside>
+
+    <section id="graph"></section>
+
+    <aside id="inspector">
+      <div id="tableDetails">
+        <h2>📋 Table</h2>
+        <div id="tableMeta">(sélectionnez une table)</div>
+
+        <h3>🏛️ Colonnes</h3>
+        <div id="columns"></div>
+
+        <h3>🔗 Relations</h3>
+        <div id="relations"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <small>
+      Données traitées localement dans votre navigateur. Aucun envoi serveur.
+    </small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
